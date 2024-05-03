@@ -1,4 +1,4 @@
-package activity;
+package com.example.lista.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -41,17 +41,8 @@ public class NewItemActivity extends AppCompatActivity {
             }
         });
 
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == PHOTO_PICKER_REQUEST) {
-                if(resultCode == Activity.RESULT_OK) {
-                    photoSelected = data.getData();
-                    ImageView imvfotoPreview = findViewById(R.id.imvPhotoPreview);
-                    imvfotoPreview.setImageURI(photoSelected);
-                }
-            }
-        }
+
+
 
         Button btnAddItem = findViewById(R.id.btnAddItem);
         btnAddItem.setOnClickListener(new View.OnClickListener() {
@@ -95,5 +86,16 @@ public class NewItemActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PHOTO_PICKER_REQUEST) {
+            if(resultCode == Activity.RESULT_OK) {
+                photoSelected = data.getData();
+                ImageView imvfotoPreview = findViewById(R.id.imvPhotoPreview);
+                imvfotoPreview.setImageURI(photoSelected);
+            }
+        }
     }
 }

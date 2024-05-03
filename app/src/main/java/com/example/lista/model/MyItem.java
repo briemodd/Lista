@@ -1,4 +1,4 @@
-package model;
+package com.example.lista.model;
 
 import android.net.Uri;
 
