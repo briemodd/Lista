@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imvPhotoPreview"
-        android:layout_width="257dp"
-        android:layout_height="300dp"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -21,8 +21,8 @@
 
     <ImageButton
         android:id="@+id/imbCl"
-        android:layout_width="41dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -40,8 +40,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
+        android:hint="Título"
         android:inputType="text"
-        android:text="Título"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imvPhotoPreview"
@@ -57,8 +57,8 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:gravity="top"
+        android:hint="Descrição"
         android:inputType="text|textMultiLine"
-        android:text="Descrição"
         app:layout_constraintBottom_toTopOf="@+id/btnAddItem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imvPhotoPreview"
