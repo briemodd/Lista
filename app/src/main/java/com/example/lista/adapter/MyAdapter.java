@@ -17,7 +17,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter {
+public class MyAdapter extends RecyclerView.Adapter { //classe Adapter responsável por construir e preencher um item da lista do RecycleView
     MainActivity mainActivity;
     List<MyItem> itens;
 
@@ -28,6 +28,7 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
+    //responsável por criar os elementos de interface para um item. elementos sao guardados em uma classe container do tipo viewholder
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mainActivity);
         View v = inflater.inflate(R.layout.item_list, parent, false);
@@ -35,6 +36,7 @@ public class MyAdapter extends RecyclerView.Adapter {
     }
 
     @Override
+    // recebe o viewholder criado por oncreateviewholder e preenche os elementos de UI com os dados do item
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyItem myItem = itens.get(position);
         View v = holder.itemView;
@@ -52,6 +54,7 @@ public class MyAdapter extends RecyclerView.Adapter {
     }
 
     @Override
+    // informa quantos elementos a lista possui
     public int getItemCount() {
         return itens.size();
     }

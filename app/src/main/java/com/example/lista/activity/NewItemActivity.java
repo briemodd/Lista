@@ -35,6 +35,7 @@ public class NewItemActivity extends AppCompatActivity {
         imgCl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /** abrir a galeria do celular e permitir que o usuário escolha uma foto**/
                 Intent photoPickerIntent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, PHOTO_PICKER_REQUEST);
@@ -50,12 +51,16 @@ public class NewItemActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (photoSelected == null) {
+                    /**verificamos se os campos foram
+                     preenchidos pelo usuário**/
                     Toast.makeText(NewItemActivity.this, "É necessário selecionar uma imagem!", Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 EditText etTitle = findViewById(R.id.etTitle);
                 String title = etTitle.getText().toString();
+                /**verificamos se os campos foram
+                 preenchidos pelo usuário**/
                 if (title.isEmpty()) {
                     Toast.makeText(NewItemActivity.this, "É necessário um título", Toast.LENGTH_LONG).show();
                     return;
@@ -63,12 +68,14 @@ public class NewItemActivity extends AppCompatActivity {
 
                 EditText etDesc = findViewById(R.id.etDesc);
                 String description = etDesc.getText().toString();
+                /**verificamos se os campos foram
+                 preenchidos pelo usuário**/
                 if (description.isEmpty()) {
                     Toast.makeText(NewItemActivity.this, "É necessário inserir uma descrição", Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                Intent i = new Intent();
+                Intent i = new Intent(); //essa intent serve unicamente para guardar os dados a serem retornados para mainActivity
                 i.setData(photoSelected);
                 i.putExtra("title", title);
                 i.putExtra("description", description);
@@ -88,7 +95,7 @@ public class NewItemActivity extends AppCompatActivity {
         });
     }
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {/**para obter a imagem retornada pelo seletor de documentos do Android**/
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PHOTO_PICKER_REQUEST) {
             if(resultCode == Activity.RESULT_OK) {

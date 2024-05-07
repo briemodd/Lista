@@ -26,7 +26,7 @@ import com.example.lista.model.MyItem;
 public class MainActivity extends AppCompatActivity {
 
     static int NEW_ITEM_REQUEST =1;
-    List<MyItem> itens = new ArrayList<>();
+    List<MyItem> itens = new ArrayList<>(); // lista de itens
 
     MyAdapter myAdapter;
 
@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, NewItemActivity.class);
-                startActivityForResult(i, NEW_ITEM_REQUEST);
+                startActivityForResult(i, NEW_ITEM_REQUEST); /**o metodo startActivityForResult assume
+                 que NewItemAcitivity irá retornar com dados em algum momento para MainActivity**/
             }
         });
 
@@ -51,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        RecyclerView rvItens = findViewById(R.id.rvItens);
+        RecyclerView rvItens = findViewById(R.id.rvItens); //obtem o recyclerview
 
         myAdapter = new MyAdapter(this, itens);
         rvItens.setAdapter(myAdapter);
 
-        rvItens.setHasFixedSize(true);
+        rvItens.setHasFixedSize(true); // indica ao RecycleView que não há variação de tamanho entre os itens da lista
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this); // criamos um gerenciador de layout do tipo linear (faz com que a lista seja mostrada de forma linear)
         rvItens.setLayoutManager(layoutManager);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvItens.getContext(), DividerItemDecoration.VERTICAL);
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 myItem.description = data.getStringExtra("description");
                 myItem.photo = data.getData();
                 itens.add(myItem);
+                //notifica o adapter para que o novo item seja mostrado no recyclerview | isso faz com que o recycleview se atualize e exiba o novo item
                 myAdapter.notifyItemInserted(itens.size()-1);
 
             }
