@@ -7,7 +7,7 @@ public class NewItemActivityViewModel extends ViewModel {
 
     Uri selectPhotoLocation = null;
 
-    public Uri getSelectedPhotoLocation() {
+    public Uri getSelectPhotoLocation() {
         return selectPhotoLocation;
     }
 

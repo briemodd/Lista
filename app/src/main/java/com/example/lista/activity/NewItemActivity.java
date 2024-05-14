@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.lista.R;
 import com.example.lista.model.NewItemActivityViewModel;
@@ -58,7 +59,9 @@ public class NewItemActivity extends AppCompatActivity {
         btnAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                NewItemActivityViewModel vm = new ViewModelProvider( NewItemActivity.this ).get(NewItemActivityViewModel.class );
 
+                Uri photoSelected = vm.getSelectPhotoLocation();
                 if (photoSelected == null) {
                     /**verificamos se os campos foram
                      preenchidos pelo usuário**/
